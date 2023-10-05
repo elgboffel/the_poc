@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-FROM rust:latest AS base
+FROM rust:1.71.1 AS base
 
 ENV USER=root
 
