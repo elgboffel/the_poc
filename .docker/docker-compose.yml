@@ -14,7 +14,10 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_CLIENT: ${DATABASE_CLIENT}
     ports:
-      - "8080:8080"
+      - "80:80"
+    expose:
+      - "80:80"
+      - "443:443"
     networks:
       server-side: {}
     volumes:
