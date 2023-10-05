@@ -1,0 +1,44 @@
+
+name: rust-poc
+services:
+  server:
+    build:
+      context: ../
+      dockerfile: .docker/server.Dockerfile
+      target: development
+    environment:
+      DATABASE_HOST: ${CONTAINER_DATABASE_HOST}
+      DATABASE_PORT: ${CONTAINER_DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+    ports:
+      - "8080:8080"
+    networks:
+      server-side: {}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15.4
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "58040:5432"
+    networks:
+      server-side: {}
+
+volumes:
+  backend-cache: {}
+  db-data: {}
+
+networks:
+  server-side: {}
