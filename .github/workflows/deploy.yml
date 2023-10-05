@@ -23,5 +23,5 @@ jobs:
           script: |
             cd the-poc
             git pull origin main
-            docker-compose -f .docker/docker-compose.yml up --build -d
+            docker-compose -f .docker/docker-compose.yml --env-file .env up --build -d
 
