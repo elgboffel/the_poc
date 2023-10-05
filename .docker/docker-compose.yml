@@ -14,7 +14,7 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_CLIENT: ${DATABASE_CLIENT}
     ports:
-      - "80:80"
+      - "80:8080"
     expose:
       - "80:80"
       - "443:443"
