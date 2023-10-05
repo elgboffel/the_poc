@@ -12,6 +12,8 @@ RUN cargo fetch
 
 FROM base AS development
 
+EXPOSE 8080
+
 CMD [ "cargo", "run", "--bin", "server", "--offline" ]
 
 FROM base AS builder
@@ -19,6 +21,8 @@ FROM base AS builder
 RUN cargo build --release --offline --bin server
 
 #FROM debian:buster-slim
+
+EXPOSE 8080
 
 #COPY --from=builder /code/target/release/server /server
 
