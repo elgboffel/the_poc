@@ -10,7 +10,7 @@ serde = { version = "1.0.188", features = ["derive"] }
 tracing-subscriber = "0.3.17"
 tracing = "0.1.37"
 star_wars_sdk = { path = "../../crates/star_wars_sdk" }
-database = { path = "../../crates/database" }
+#database = { path = "../../crates/database" }
 entity = { path = "../../crates/entity" }
 dotenvy = "0.15.7"
 serde_json = "1.0.107"

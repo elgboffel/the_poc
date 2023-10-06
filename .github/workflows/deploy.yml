@@ -21,7 +21,14 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            cd the-poc
+            if [ -d app ]; then
+              echo "Folder app exists"
+            else
+              mkdir -p app
+              git init
+              git remote add origin https://github.com/elgboffel/the_poc.git
+            fi
+            cd app
             git pull origin main
             docker-compose -f .docker/docker-compose.yml --env-file .env up --build -d
 

@@ -5,7 +5,7 @@ services:
     build:
       context: ../
       dockerfile: .docker/server.Dockerfile
-      target: builder
+      target: development
     environment:
       DATABASE_HOST: ${CONTAINER_DATABASE_HOST}
       DATABASE_PORT: ${CONTAINER_DATABASE_PORT}
@@ -14,8 +14,6 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_CLIENT: ${DATABASE_CLIENT}
     ports:
-      - "8080:80/tcp"
-    expose:
       - "8080:8080"
     networks:
       server-side: {}
