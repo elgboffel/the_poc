@@ -20,7 +20,6 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             if [ -d app ]; then
               echo "Folder app exists"
