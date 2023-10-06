@@ -21,14 +21,14 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            if [ -d app ]; then
-              echo "Folder app exists"
+            if [ -d www ]; then
+              cd www
             else
-              mkdir -p app
+              mkdir -p www
+              cd www
               git init
               git remote add origin https://github.com/elgboffel/the_poc.git
             fi
-            cd app
             git pull origin main
             docker-compose -f .docker/docker-compose.yml --env-file .env up --build -d
 
