@@ -20,7 +20,7 @@ FROM base AS builder
 
 RUN cargo build --release --offline --bin server
 
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 
 #COPY --from=builder /code/target/release/server /server
 
