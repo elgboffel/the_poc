@@ -9,7 +9,6 @@ COPY . /code
 
 RUN cargo fetch
 
-
 FROM base AS development
 
 EXPOSE 8080
@@ -20,10 +19,10 @@ FROM base AS builder
 
 RUN cargo build --release --offline --bin server
 
-#FROM debian:bookworm-slim
+FROM rust:1.71.1-slim AS Production
 
-#COPY --from=builder /code/target/release/server /server
+COPY --from=builder /code/target/release/server /server
 
 EXPOSE 8080
 
-CMD [ "/code/target/release/server" ]
+CMD [ "/server" ]

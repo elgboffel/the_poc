@@ -5,7 +5,7 @@ services:
     build:
       context: ../
       dockerfile: .docker/server.Dockerfile
-      target: builder
+      target: production
     environment:
       DATABASE_HOST: ${CONTAINER_DATABASE_HOST}
       DATABASE_PORT: ${CONTAINER_DATABASE_PORT}
