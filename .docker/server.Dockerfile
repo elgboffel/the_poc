@@ -11,8 +11,6 @@ RUN cargo fetch
 
 FROM base AS development
 
-EXPOSE 8080
-
 CMD [ "cargo", "run", "--bin", "server", "--offline" ]
 
 FROM base AS builder
@@ -22,7 +20,5 @@ RUN cargo build --release --offline --bin server
 FROM rust:1.71.1-slim AS Production
 
 COPY --from=builder /code/target/release/server /server
-
-EXPOSE 8080
 
 CMD [ "/server" ]
